@@ -3,5 +3,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def january(request):
+    return HttpResponse("This is the monthly challenge for January")
+
+
+def february(request):
+    return HttpResponse("This is the monthly challenge for February")
