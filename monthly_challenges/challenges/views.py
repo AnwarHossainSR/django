@@ -1,4 +1,5 @@
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import (HttpResponse, HttpResponseNotFound,
+                         HttpResponseRedirect)
 
 monthly_challenge_dict = {
     "january": "Eat no meat for the entire month!",
