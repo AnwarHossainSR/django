@@ -27,5 +27,5 @@ def monthly_challenge(request, month):
 
 def monthly_challenge_by_month(request, month):
     months = list(monthly_challenge_dict.keys())
-    redirect_month = months[month]
+    redirect_month = months[month - 1]
     return HttpResponseRedirect("/challenges/" + redirect_month)
