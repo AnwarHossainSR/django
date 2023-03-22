@@ -1,28 +1,34 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
-# Create your views here.
-
-# def january(request):
-#     return HttpResponse("This is the monthly challenge for January")
-
-# def february(request):
-#     return HttpResponse("This is the monthly challenge for February")
+monthly_challenge_dict = {
+    "january": "Eat no meat for the entire month!",
+    "february": "Walk for at least 20 minutes every day!",
+    "march": "Learn Django for at least 20 minutes every day!",
+    "april": "Eat no meat for the entire month!",
+    "may": "Walk for at least 20 minutes every day!",
+    "june": "Learn Django for at least 20 minutes every day!",
+    "july": "Eat no meat for the entire month!",
+    "august": "Walk for at least 20 minutes every day!",
+    "september": "Learn Django for at least 20 minutes every day!",
+    "october": "Eat no meat for the entire month!",
+    "november": "Walk for at least 20 minutes every day!",
+    "december": None,
+}
 
 
 # monthly challenge dynamic url
 def monthly_challenge(request, month):
-    challenge_text = None
+    try:
+        challenge_text = monthly_challenge_dict[month]
+        return HttpResponse(challenge_text)
+    except:
+        return HttpResponseNotFound("This month is not supported!")
 
-    # set different challenge for different month
-    if month == "january":
-        challenge_text = "Eat no meat for the entire month!"
-    elif month == "february":
-        challenge_text = "Walk for at least 20 minutes every day!"
-    elif month == "march":
-        challenge_text = "Learn Django for at least 20 minutes every day!"
-    elif month == "april":
-        challenge_text = "Eat no meat for the entire month!"
-    else:
-        return HttpResponse("This month is not supported")
 
-    return HttpResponse(challenge_text)
+def monthly_challenge_by_month(request, month):
+    months = list(monthly_challenge_dict.keys())
+    if month > len(months):
+        return HttpResponseNotFound("Invalid month")
+    redirect_month = months[month - 1]
+
+    return HttpResponseRedirect("/challenges/" + redirect_month)
