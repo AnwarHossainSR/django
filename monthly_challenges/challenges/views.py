@@ -26,3 +26,7 @@ def monthly_challenge(request, month):
         return HttpResponse("This month is not supported")
 
     return HttpResponse(challenge_text)
+
+
+def monthly_challenge_by_month(request, month):
+    return HttpResponse(month)
