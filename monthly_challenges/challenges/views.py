@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 monthly_challenge_dict = {
     "january": "Eat no meat for the entire month!",
@@ -22,8 +22,10 @@ def monthly_challenge(request, month):
         challenge_text = monthly_challenge_dict[month]
         return HttpResponse(challenge_text)
     except:
-        return HttpResponse("This month is not supported!")
+        return HttpResponseNotFound("This month is not supported!")
 
 
 def monthly_challenge_by_month(request, month):
-    return HttpResponse(month)
+    months = list(monthly_challenge_dict.keys())
+    redirect_month = months[month]
+    return HttpResponseRedirect("/challenges/" + redirect_month)
