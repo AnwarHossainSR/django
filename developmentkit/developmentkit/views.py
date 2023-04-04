@@ -3,7 +3,10 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index.html')
+    data = {
+        'title': 'Home Page',
+    }
+    return render(request, 'index.html', data)
 
 
 def blogs(request):
