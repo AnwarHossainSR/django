@@ -8,6 +8,23 @@
   </head>
   <body>
     <h1>Home Page</h1>
-    <p>This is the home page. You can change this text in the</p>
+    <div>
+      {% for n in values %}
+      <p>{{forloop.counter}}-{{n}}</p>
+      {% endfor %}
+    </div>
+
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        {% for n in students %}
+        <tr>
+          <td>{{n.name}}</td>
+          <td>{{n.age}}</td>
+        </tr>
+         {% endfor %}
+      </tr>
+    </table>
   </body>
 </html>
