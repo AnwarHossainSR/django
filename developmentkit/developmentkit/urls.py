@@ -19,6 +19,7 @@ from developmentkit import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', views.index, name='index'),
-    path('blog/<int:question_id>/', views.detail, name='detail'),
+    path('blogs/', views.blogs, name='blogs'),
+    path('blogs/<int:question_id>/', views.detail, name='detail'),
+    path('', views.index, name='index'),
 ]
