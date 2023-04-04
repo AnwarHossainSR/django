@@ -18,10 +18,18 @@
       <tr>
         <th>Name</th>
         <th>Age</th>
+        <th>Is Adult</th>
         {% for n in students %}
         <tr>
           <td>{{n.name}}</td>
           <td>{{n.age}}</td>
+          <td>
+            {% if n.age > 18 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+          </td>
         </tr>
          {% endfor %}
       </tr>
