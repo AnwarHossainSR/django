@@ -4,10 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>{{title}}</title>
   </head>
   <body>
     <h1>Home Page</h1>
-    <p>This is the home page. You can change this text in the</p>
+    <div>
+      {% for n in values %}
+      <p>{{forloop.counter}}-{{n}}</p>
+      {% endfor %}
+    </div>
+
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Is Adult</th>
+        {% for n in students %}
+        <tr>
+          <td>{{n.name}}</td>
+          <td>{{n.age}}</td>
+          <td>
+            {% if n.age > 18 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+          </td>
+        </tr>
+         {% endfor %}
+      </tr>
+    </table>
   </body>
 </html>
